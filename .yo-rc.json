@@ -30,6 +30,7 @@
     "serverSideOptions": [],
     "serviceDiscoveryType": "consul",
     "skipClient": true,
+    "skipUserManagement": true,
     "syncUserWithIdp": null,
     "testFrameworks": [],
     "websocket": false,
