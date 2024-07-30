@@ -1,0 +1,30 @@
+{
+  "annotations": {
+    "changelogDate": "20240730043715"
+  },
+  "clientRootFolder": "kafkaDemo",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "ownerName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "productName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "quantity",
+      "fieldType": "Integer"
+    }
+  ],
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "kafkaDemo",
+  "name": "Producer",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}
