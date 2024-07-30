@@ -1,5 +1,6 @@
 package com.demo.kafka.service.listener;
 
+import com.demo.kafka.domain.Producer;
 import com.demo.kafka.service.KafkaProducerService;
 import jakarta.persistence.PostPersist;
 import jakarta.persistence.PostRemove;
@@ -15,7 +16,7 @@ public class DatabaseChangeListener {
     @PostPersist
     @PostUpdate
     @PostRemove
-    public void afterAnyUpdate(YourEntity entity) {
+    public void afterAnyUpdate(Producer entity) {
         producerService.sendMessage(entity);
     }
 }

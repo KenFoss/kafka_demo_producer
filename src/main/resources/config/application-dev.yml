@@ -21,6 +21,7 @@ logging:
     com.demo.kafka: DEBUG
     org.apache.kafka: DEBUG
     org.springframework.kafka: DEBUG
+    org.springframework.security: DEBUG
 
 management:
   zipkin: # Use the "zipkin" Maven profile to have the Spring Cloud Zipkin dependencies
