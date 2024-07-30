@@ -1,5 +1,7 @@
 package com.demo.kafka.service.listener;
 
+import com.demo.kafka.AvroProducer;
+import com.demo.kafka.domain.Producer;
 import com.demo.kafka.service.KafkaProducerService;
 import jakarta.persistence.PostPersist;
 import jakarta.persistence.PostRemove;
@@ -15,7 +17,18 @@ public class DatabaseChangeListener {
     @PostPersist
     @PostUpdate
     @PostRemove
-    public void afterAnyUpdate(YourEntity entity) {
-        producerService.sendMessage(entity);
+    public void afterAnyUpdate(Producer entity) {
+        if (entity == null) {
+            System.out.println("Received null entity in DatabaseChangeListener");
+            return;
+        }
+
+        AvroProducer avroProducer = new AvroProducer();
+        avroProducer.setId(entity.getId());
+        avroProducer.setOwnerName(entity.getOwnerName());
+        avroProducer.setProductName(entity.getProductName());
+        avroProducer.setQuantity(entity.getQuantity());
+
+        producerService.sendMessage(avroProducer);
     }
 }

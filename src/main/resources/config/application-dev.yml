@@ -21,6 +21,7 @@ logging:
     com.demo.kafka: DEBUG
     org.apache.kafka: DEBUG
     org.springframework.kafka: DEBUG
+    org.springframework.security: DEBUG
 
 management:
   zipkin: # Use the "zipkin" Maven profile to have the Spring Cloud Zipkin dependencies
@@ -42,7 +43,7 @@ spring:
       indent-output: true
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:mysql://localhost:3306/kafkaDemo?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&createDatabaseIfNotExist=true
+    url: jdbc:mysql://localhost:3306/kafkaDemo?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true
     username: root
     password: root
     hikari:
@@ -61,15 +62,26 @@ spring:
   thymeleaf:
     cache: false
   kafka:
-    bootstrap-servers: localhost:9092 # Change this to your Kafka server address
-    consumer:
-      group-id: your-consumer-group
-      auto-offset-reset: earliest
-      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    bootstrap-servers: localhost:19092
     producer:
-      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
+      properties:
+        schema.registry.url: http://localhost:8085
+    cloud:
+      stream:
+        kafka:
+          binder:
+            brokers: localhost:19092
+        bindings:
+          producerChannel:
+            destination: producer-details
+            content-type: application/*+avro
+    schema-registry-client:
+      endpoint: http://localhost:8085
+#        input:
+#          destination: employee-details  # Topic name (for consumption)
+#          content-type: application/*+avro
 
 server:
   port: 8081

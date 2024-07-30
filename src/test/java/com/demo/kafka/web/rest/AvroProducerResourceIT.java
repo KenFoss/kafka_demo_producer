@@ -31,7 +31,7 @@ import org.springframework.transaction.annotation.Transactional;
 @IntegrationTest
 @AutoConfigureMockMvc
 @WithMockUser
-class ProducerResourceIT {
+class AvroProducerResourceIT {
 
     private static final String DEFAULT_OWNER_NAME = "AAAAAAAAAA";
     private static final String UPDATED_OWNER_NAME = "BBBBBBBBBB";

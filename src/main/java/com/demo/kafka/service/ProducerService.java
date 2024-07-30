@@ -1,10 +1,13 @@
 package com.demo.kafka.service;
 
+import com.demo.kafka.AvroProducer;
 import com.demo.kafka.domain.Producer;
 import com.demo.kafka.repository.ProducerRepository;
 import com.demo.kafka.service.dto.ProducerDTO;
 import com.demo.kafka.service.mapper.ProducerMapper;
 import java.util.Optional;
+
+import org.apache.kafka.clients.producer.KafkaProducer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -25,9 +28,12 @@ public class ProducerService {
 
     private final ProducerMapper producerMapper;
 
-    public ProducerService(ProducerRepository producerRepository, ProducerMapper producerMapper) {
+    private final KafkaProducerService kafkaProducerService;
+
+    public ProducerService(ProducerRepository producerRepository, ProducerMapper producerMapper, KafkaProducerService kafkaProducerService) {
         this.producerRepository = producerRepository;
         this.producerMapper = producerMapper;
+        this.kafkaProducerService = kafkaProducerService;
     }
 
     /**
@@ -40,6 +46,9 @@ public class ProducerService {
         log.debug("Request to save Producer : {}", producerDTO);
         Producer producer = producerMapper.toEntity(producerDTO);
         producer = producerRepository.save(producer);
+
+//        AvroProducer avroProducer
+//        kafkaProducerService.sendMessage(producer);
         return producerMapper.toDto(producer);
     }
 
@@ -53,6 +62,7 @@ public class ProducerService {
         log.debug("Request to update Producer : {}", producerDTO);
         Producer producer = producerMapper.toEntity(producerDTO);
         producer = producerRepository.save(producer);
+//        kafkaProducerService.sendMessage(producer);
         return producerMapper.toDto(producer);
     }
 
