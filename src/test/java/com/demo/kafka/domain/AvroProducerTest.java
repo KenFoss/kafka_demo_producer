@@ -6,7 +6,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.demo.kafka.web.rest.TestUtil;
 import org.junit.jupiter.api.Test;
 
-class ProducerTest {
+class AvroProducerTest {
 
     @Test
     void equalsVerifier() throws Exception {

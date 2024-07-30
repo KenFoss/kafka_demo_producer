@@ -6,7 +6,7 @@ import static com.demo.kafka.domain.ProducerTestSamples.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class ProducerMapperTest {
+class AvroProducerMapperTest {
 
     private ProducerMapper producerMapper;
 

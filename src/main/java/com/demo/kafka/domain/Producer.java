@@ -1,6 +1,9 @@
 package com.demo.kafka.domain;
 
+import com.demo.kafka.service.listener.DatabaseChangeListener;
 import jakarta.persistence.*;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
 import java.io.Serializable;
 
 /**
@@ -8,6 +11,7 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name = "producer")
+@EntityListeners(DatabaseChangeListener.class)
 @SuppressWarnings("common-java:DuplicatedBlocks")
 public class Producer implements Serializable {
 
