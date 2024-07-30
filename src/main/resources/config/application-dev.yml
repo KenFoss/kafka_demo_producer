@@ -19,6 +19,8 @@ logging:
     tech.jhipster: DEBUG
     org.hibernate.SQL: DEBUG
     com.demo.kafka: DEBUG
+    org.apache.kafka: DEBUG
+    org.springframework.kafka: DEBUG
 
 management:
   zipkin: # Use the "zipkin" Maven profile to have the Spring Cloud Zipkin dependencies
@@ -42,7 +44,7 @@ spring:
     type: com.zaxxer.hikari.HikariDataSource
     url: jdbc:mysql://localhost:3306/kafkaDemo?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&createDatabaseIfNotExist=true
     username: root
-    password:
+    password: root
     hikari:
       poolName: Hikari
       auto-commit: false
@@ -58,6 +60,16 @@ spring:
     cache-duration: PT1S # 1 second, see the ISO 8601 standard
   thymeleaf:
     cache: false
+  kafka:
+    bootstrap-servers: localhost:9092 # Change this to your Kafka server address
+    consumer:
+      group-id: your-consumer-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    producer:
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
 
 server:
   port: 8081
