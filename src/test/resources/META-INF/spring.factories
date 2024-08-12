@@ -1,2 +1,2 @@
-org.springframework.test.context.ContextCustomizerFactory = com.demo.kafka.\
+org.springframework.test.context.ContextCustomizerFactory = com.demo.kafkaProducer.\
     config.SqlTestContainersSpringContextCustomizerFactory
