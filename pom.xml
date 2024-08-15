@@ -86,6 +86,14 @@
 
     <dependencies>
         <dependency>
+<<<<<<< Updated upstream
+=======
+            <groupId>com.demo.schema</groupId>
+            <artifactId>schema_library</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+>>>>>>> Stashed changes
             <groupId>tech.jhipster</groupId>
             <artifactId>jhipster-framework</artifactId>
             <version>${jhipster-framework.version}</version>
@@ -223,10 +231,13 @@
             <groupId>jakarta.annotation</groupId>
             <artifactId>jakarta.annotation-api</artifactId>
         </dependency>
+<<<<<<< Updated upstream
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
         </dependency>
+=======
+>>>>>>> Stashed changes
         <dependency>
             <groupId>org.glassfish.jaxb</groupId>
             <artifactId>jaxb-runtime</artifactId>
@@ -295,6 +306,20 @@
         </dependency>
     </dependencies>
 
+<<<<<<< Updated upstream
+=======
+    <repositories>
+        <repository>
+            <id>local-avro-repo</id>
+            <url>http://localhost:8888</url>
+        </repository>
+        <repository>
+            <id>confluent</id>
+            <url>https://packages.confluent.io/maven/</url>
+        </repository>
+    </repositories>
+
+>>>>>>> Stashed changes
     <build>
         <defaultGoal>spring-boot:run</defaultGoal>
         <plugins>
